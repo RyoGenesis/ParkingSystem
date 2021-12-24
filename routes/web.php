@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index']);
+Route::get('/home', [HomeController::class,'index']);
+Route::get('/park-vehicle', [HomeController::class,'parkIndex']);
+Route::get('/checkout', [HomeController::class,'checkoutIndex']);
+
+Route::get('/admin', [AdminController::class,'index']);
