@@ -24,7 +24,6 @@ class AuthController extends Controller
         if(Auth::attempt($credential,true)) return redirect("admin.dashboard");
         else{
             return redirect()->back()->withErrors("Invalid Account!");
-           
         }
     }
 
