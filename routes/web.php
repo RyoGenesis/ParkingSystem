@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,8 @@ Route::get('/home', [HomeController::class,'index']);
 Route::get('/park-vehicle', [HomeController::class,'parkIndex']);
 Route::get('/checkout', [HomeController::class,'checkoutIndex']);
 
+Route::post('/login', [AuthController::class,'login']);
+Route::get('/logout', [AuthController::class,'logout']);
+
 Route::get('/admin', [AdminController::class,'index']);
+Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
