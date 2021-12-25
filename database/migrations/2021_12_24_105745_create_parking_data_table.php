@@ -16,7 +16,9 @@ class CreateParkingDataTable extends Migration
     {
         Schema::create('parking_data', function (Blueprint $table) {
             $table->id();
-            $table->string('license_plate');
+            $table->foreignId('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')
+            ->on('vehicles')->onDelete('cascade');
             $table->string('unique_code')->unique();
             $table->dateTime('time_in');
             $table->dateTime('time_out')->nullable();
