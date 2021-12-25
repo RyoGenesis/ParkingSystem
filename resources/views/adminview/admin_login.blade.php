@@ -2,7 +2,7 @@
 @section('title-header','ParkSys - Admin Login')
 
 @section('content')
-        <div class=" card col-5 m-auto">
+        <div class=" card col-5 m-auto bg-light border-danger">
             <div class="card-header">
                 <p class="m-0 text-center fw-bolder">Admin Login</p>
             </div>
@@ -16,8 +16,8 @@
                                 <tr>
                                     <td class="col-5"><label for="email">E-mail Address</label></td>
                                     <td>
-                                        <input class="form-control" type="text" name="email_address" id="email" value={{Cookie::get('email')!= null? Cookie::get("email"):""}} @error('email_address') is-invalid @enderror>
-                                        @error('email_address')
+                                        <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" id="email" value={{Cookie::get('email')!= null? Cookie::get("email"):""}}>
+                                        @error('email')
                                             <p>{{$message}}</p>
                                         @enderror
                                     </td>
@@ -25,7 +25,7 @@
                                 <tr>
                                     <td class="col-5"><label  for="password">Password</label></td>
                                     <td>
-                                        <input class="form-control" type="password" name="password" id="password" @error('password') is-invalid @enderror>
+                                        <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" id="password" >
                                         @error('password')
                                             <p>{{$message}}</p>
                                         @enderror

@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="col mt-3 mt-lg-0">
-                <a class="btn btn-danger container-fluid" href="">
+                <a class="btn btn-danger container-fluid" href="{{ route('checkout') }}">
                     <i class="fa fa-car my-md-4 icon-img"></i>
                     <p class="mb-md-4 mb-0s fs-3 fw-bold">Parking Check Out</p>
                 </a>

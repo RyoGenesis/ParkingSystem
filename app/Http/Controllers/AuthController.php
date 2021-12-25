@@ -13,15 +13,15 @@ class AuthController extends Controller
     //
     public function login(Request $request){
         $validation = [
-            "email_address"=>"required",
+            "email"=>"required|email",
             "password"=>"required"
         ];
         $credential = $request->validate($validation);
 
         if($request->remember){
-            Cookie::queue('email',$credential['email_address'],10080);
+            Cookie::queue('email',$credential['email'],10080);
         }
-        if(Auth::attempt($credential,true)) return redirect("admin.dashboard");
+        if(Auth::attempt($credential,true)) return redirect()->route("admin.dashboard");
         else{
             return redirect()->back()->withErrors("Invalid Account!");
         }
@@ -57,6 +57,6 @@ class AuthController extends Controller
         $user = User::where("email",Auth::user()->email)->first();
         $user->password = Hash::make($request->newPassword);
         $user->save();
-        return redirect()->back()->withErrors("Change Password Success!");
+        return redirect()->back()->withSuccess("Change Password Success!");
     }
 }

@@ -16,18 +16,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//homepage routes
 Route::get('/', [HomeController::class,'index']);
 Route::get('/home', [HomeController::class,'index'])->name('home');
+
+//parking routes
 Route::get('/park-vehicle', [HomeController::class,'parkIndex'])->name('park-vehicle');
 Route::post('/parkVehicle', [ParkingDataController::class,'park']);
 
-Route::get('/checkout', [HomeController::class,'checkoutIndex']);
+//checkout routes
+Route::get('/checkout', [HomeController::class,'checkoutIndex'])->name('checkout');
 Route::post('/checkoutVehicle', [ParkingDataController::class,'checkout']);
 
+//auth route
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/logout', [AuthController::class,'logout']);
 
+//admin related routes
 Route::get('/admin', [AdminController::class,'index']);
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
 Route::get('/admin/report', [AdminController::class,'reportIndex']);
