@@ -1,1 +1,14 @@
+.app-bg{
+    background-color: #FABB51;
+}
+
+.icon-img{
+    font-size: 14rem;
+}
+
+@media (max-width: 576px) {
+    .icon-img{
+        font-size: 7rem;
+    }
+}
 

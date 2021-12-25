@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,'index']);
-Route::get('/home', [HomeController::class,'index']);
-Route::get('/park-vehicle', [HomeController::class,'parkIndex']);
+Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('/park-vehicle', [HomeController::class,'parkIndex'])->name('park-vehicle');
 Route::post('/parkVehicle', [ParkingDataController::class,'park']);
 
 Route::get('/checkout', [HomeController::class,'checkoutIndex']);
