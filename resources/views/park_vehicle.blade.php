@@ -15,10 +15,10 @@
                     <label class="fw-bold py-2 fs-4" for="license_plate">Enter Your License Plate</label>
                     <input class="form-control form-control-lg w-75 m-auto @error('license_plate') is-invalid @enderror" type="text" name="license_plate" id="license_plate">
                     @error('license_plate')
-                        <p>{{$message}}</p>
+                        <p class="text-danger">{{$message}}</p>
                     @enderror
                     @error('isParked')
-                        <p>{{$message}}</p>
+                        <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
                 <button class="btn btn-warning fs-5" type="submit">Confirm</button>                

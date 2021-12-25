@@ -62,8 +62,30 @@ class ParkingDataController extends Controller
         $parkingdata->time_in = $date;
         $parkingdata->vehicle_id = $vehicle->id;
         $parkingdata->is_active = true;
-        $parkingdata->unique_code = $vehicle->license_plate . '-' . time() . '-'. Str::random(8);
+        $parkingdata->unique_code = Str::remove(' ', $vehicle->license_plate) . '-' . time() . '-'. Str::random(8);
         $parkingdata->save();
         return redirect()->back()->withSuccess('Successfully Generating Parking Ticket.');
+    }
+
+
+    public function checkout(Request $request){
+        $validation = [
+            "code"=>['required', 'string'],
+        ];
+        $temp = $request->validate($validation);
+        
+        $parkingdata = ParkingData::where('unique_code',$temp['code'])->where('is_active',true)->first();
+
+        if($parkingdata == null){
+            return redirect()->back()->withErrors(['invalid'=>'Unique Code Invalid!']);
+        }
+
+        $parkingdata->vehicle->is_parked = false;
+        $parkingdata->vehicle->save();
+        $parkingdata->is_active = false;
+        $date = date("Y-m-d H:i:s");
+        $parkingdata->time_out = $date;
+        $parkingdata->save();
+        return redirect()->back()->withSuccess('Successfully Check Out! See You Again Soon!');
     }
 }

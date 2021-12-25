@@ -11,7 +11,7 @@ class Vehicle extends Model
     use HasFactory, SoftDeletes;
     protected $table="vehicles";
     protected $dates = ['deleted_at'];
-    public function parkingData(){
+    public function parking_data(){
         return $this->hasMany(ParkingData::class);
     }
 }
