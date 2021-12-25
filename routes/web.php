@@ -35,6 +35,6 @@ Route::get('/logout', [AuthController::class,'logout']);
 //admin related routes
 Route::get('/admin', [AdminController::class,'index']);
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('/admin/report', [AdminController::class,'reportIndex']);
+Route::get('/admin/report', [AdminController::class,'reportIndex'])->name('admin.report');
 Route::get('/admin/report/all', [AdminController::class,'all'])->name('admin.report.all');
 Route::get('/admin/report/range-from', [AdminController::class,'fromDate'])->name('admin.report.range');

@@ -2,8 +2,8 @@
 @section('title-header','ParkSys - Admin Login')
 
 @section('content')
-        <div class=" card col-5 m-auto bg-light border-danger">
-            <div class="card-header">
+        <div class=" card col-5 m-auto bg-light border-warning">
+            <div class="card-header menu-bg">
                 <p class="m-0 text-center fw-bolder">Admin Login</p>
             </div>
             <div class="card-body">

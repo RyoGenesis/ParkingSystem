@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="row px-2 px-lg-5 flex-grow-1 d-flex flex-column">
-        <div class="col-12 text-center text-white">
-            <h1>Welcome To ParkSys</h1>
+        <div class="col-12 text-center">
+            <h1 class="fw-bold">Welcome To ParkSys</h1>
             <p class="fw-bold fs-6 font-italic">Please Choose Our Following Services Below</p>
         </div>
         <div class="row row-cols-1 row-cols-lg-2 m-auto">

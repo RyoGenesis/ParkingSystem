@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light menu-bg">
         <div class="container-fluid px-5 mx-4">
             <div>
                 <a class="navbar-brand fst-italic " href="/"><i class="fas fa-car-alt"></i> ParkSys</a>

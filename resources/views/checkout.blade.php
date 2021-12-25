@@ -2,9 +2,9 @@
 @section('title-header','ParkSys - Checkout')
 
 @section('content')
-<h1 class="text-center text-white p-3">Check Out Parking Lot</h1>
-<div class=" card col-10 col-lg-6 col-md-7 m-auto text-center border-2 bg-light border-danger">
-    <div class="card-header">
+<h1 class="text-center p-3">Check Out Parking Lot</h1>
+<div class=" card col-10 col-lg-6 col-md-7 m-auto text-center border-2 bg-light border-warning">
+    <div class="card-header menu-bg">
         <p class="m-0 fw-bolder fs-2">Check Out</p>
     </div>
     <div class="card-body">

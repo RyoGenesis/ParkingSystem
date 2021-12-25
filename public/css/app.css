@@ -1,5 +1,10 @@
 .app-bg{
-    background-color: #FABB51;
+    background-image: url("../storage/images/bg-color.jpg");
+    background-size: contain;
+}
+
+.menu-bg{
+    background-color: #F0BB62;
 }
 
 .icon-img{
