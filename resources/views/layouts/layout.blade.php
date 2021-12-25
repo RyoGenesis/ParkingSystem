@@ -9,9 +9,9 @@
     <script src="{{ asset('/asset/js/app.js') }}"></script>
     <title>@yield('title-header')</title>
 </head>
-<body onload=display_ct();>
+<body class="d-flex flex-column min-vh-100" onload=display_ct();>
     @include('layouts.header')
-    <div class="container-fluid p-3 min-vh-100" style="background-color: #FABB51">
+    <div class="container-fluid p-3 flex-grow-1" style="background-color: #FABB51">
         @yield('content')
     </div>
     @include('layouts.footer')
