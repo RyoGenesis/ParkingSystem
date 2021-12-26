@@ -64,7 +64,8 @@ class ParkingDataController extends Controller
         $parkingdata->is_active = true;
         $parkingdata->unique_code = Str::remove(' ', $vehicle->license_plate) . '-' . time() . '-'. Str::random(8);
         $parkingdata->save();
-        return redirect()->back()->withSuccess('Successfully Generating Parking Ticket.');
+        //dd($parkingdata);
+        return redirect()->back()->with('parking', $parkingdata)->withSuccess('Successfully Generating Parking Ticket.');
     }
 
 
@@ -86,6 +87,6 @@ class ParkingDataController extends Controller
         $date = date("Y-m-d H:i:s");
         $parkingdata->time_out = $date;
         $parkingdata->save();
-        return redirect()->back()->withSuccess('Successfully Check Out! See You Again Soon!');
+        return redirect()->route('checkout-detail')->with('parking', $parkingdata);
     }
 }

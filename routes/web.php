@@ -26,6 +26,7 @@ Route::post('/parkVehicle', [ParkingDataController::class,'park']);
 
 //checkout routes
 Route::get('/checkout', [HomeController::class,'checkoutIndex'])->name('checkout');
+Route::get('/checkout-detail', [HomeController::class,'detail'])->name('checkout-detail');
 Route::post('/checkoutVehicle', [ParkingDataController::class,'checkout']);
 
 //auth route

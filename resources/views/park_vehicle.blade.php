@@ -31,14 +31,17 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content text-center">
       <div class="modal-header">
-        <h5 class="modal-title" id="parkConfirmationTitle">Successfully Register Parking Information</h5>
+        <h5 class="modal-title m-auto" id="parkConfirmationTitle">Successfully Register Parking Information</h5>
       </div>
       <div class="modal-body text-center">
-        <p class="text-success">{{session('success')}}</p>
+        @if(session('success'))
+            <p class="text-success">{{session('success')}}</p>
+            <p class="fw-bold m-0">For License Plate:</p>
+            <p>{{session('parking')->vehicle->license_plate}}</p>
+            <p class="fw-bold m-0">Your Unique Code (Please Save This Code For Checkout):</p>
+            <p>{{session('parking')->unique_code}}</p>
+        @endif
         <a href="{{ route('home')}}" class="btn btn-warning">OK</a>
-      </div>
-      <div class="modal-footer">
-
       </div>
     </div>
   </div>

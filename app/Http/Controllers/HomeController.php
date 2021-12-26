@@ -17,4 +17,8 @@ class HomeController extends Controller
     public function checkoutIndex(){
         return view('checkout');
     }
+
+    public function detail(){
+        return view('checkout_detail');
+    }
 }
