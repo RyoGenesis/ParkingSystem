@@ -24,9 +24,6 @@
                 <button class="btn btn-warning fs-5" type="submit">Confirm</button>                
             </form>
         </div>
-        @if (session('success'))
-            <p class="text-success">{{session('success')}}</p>
-        @endif 
     </div>
 </div>
 
@@ -46,7 +43,9 @@
     </div>
   </div>
 </div>
+@endsection
 
+@section('script')
 @if(session('success'))
 <script>
     $(document).ready(function(){
