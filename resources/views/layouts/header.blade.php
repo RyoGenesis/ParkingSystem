@@ -10,9 +10,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapsed">
                 <ul class="ms-auto navbar-nav mb-2 mb-lg-0">
+                    <p id="clock" class="navbar-text text-center mb-0"></p>
                     @auth
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-end" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-1"></i>
                                 {{Auth::user()->name}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -23,7 +25,7 @@
                         </li>
                     @endauth
                 </ul>
-                <p id="clock" class="navbar-text text-center mb-0"></p>
+               
             </div>    
         </div>
     </nav>

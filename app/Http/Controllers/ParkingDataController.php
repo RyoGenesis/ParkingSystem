@@ -15,6 +15,10 @@ class ParkingDataController extends Controller
         $date = date("Y-m-d H:i:s");
     }
 
+    public function all(){
+        return view('adminview.report')->with('parkingdata', ParkingData::paginate(15));
+    }
+
     public function fromDate(Request $request){
         $validation = [
             "date_start"=>'required|date|before_or_equal:date_end',

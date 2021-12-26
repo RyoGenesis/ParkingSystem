@@ -2,10 +2,11 @@
 @section('title-header','ParkSys - Dashboard')
 
 @section('content')
-        <h1 class="text-center">Dashboard</h1>
-        <div class=" card col-5 m-auto bg-light border-danger">
-            <div class="card-header">
-                <p class="m-0 text-center fw-bolder">Dashboard</p>
-            </div>
-        </div>
+    <div class="text-center">
+        <h1>Dashboard</h1>
+        <p class="fw-bold">Welcome, admin {{Auth::user()->name}}</p>
+    </div>
+    <div class="container">
+        <a class="btn btn-danger" href="{{ route('admin.report.all')}}">View All Parking Data Report</a>
+    </div>
 @endsection
