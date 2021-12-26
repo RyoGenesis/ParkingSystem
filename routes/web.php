@@ -16,18 +16,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//homepage routes
-Route::get('/', [HomeController::class,'index']);
-Route::get('/home', [HomeController::class,'index'])->name('home');
-
-//parking routes
-Route::get('/park-vehicle', [HomeController::class,'parkIndex'])->name('park-vehicle');
-Route::post('/parkVehicle', [ParkingDataController::class,'park']);
-
-//checkout routes
-Route::get('/checkout', [HomeController::class,'checkoutIndex'])->name('checkout');
-Route::get('/checkout-detail', [HomeController::class,'detail'])->name('checkout-detail');
-Route::post('/checkoutVehicle', [ParkingDataController::class,'checkout']);
+//middleware must not be authenticated to access
+Route::middleware('guest')->group(function () {
+    //homepage routes
+    Route::get('/', [HomeController::class,'index']);
+    Route::get('/home', [HomeController::class,'index'])->name('home');
+    
+    //parking routes
+    Route::get('/park-vehicle', [HomeController::class,'parkIndex'])->name('park-vehicle');
+    Route::post('/parkVehicle', [ParkingDataController::class,'park']);
+    
+    //checkout routes
+    Route::get('/checkout', [HomeController::class,'checkoutIndex'])->name('checkout');
+    Route::get('/checkout-detail', [HomeController::class,'detail'])->name('checkout-detail');
+    Route::post('/checkoutVehicle', [ParkingDataController::class,'checkout']);
+});
 
 //auth route
 Route::post('/login', [AuthController::class,'login']);
@@ -35,7 +38,7 @@ Route::get('/logout', [AuthController::class,'logout']);
 
 //admin related routes
 Route::prefix('admin')->name('admin')->group(function () {
-    Route::get('/', [AdminController::class,'index']);
+    Route::get('/', [AdminController::class,'index'])->middleware('guest');
     Route::middleware('auth')->group(function(){
         Route::get('/dashboard', [AdminController::class,'dashboard'])->name('.dashboard');
         Route::get('/report', [AdminController::class,'reportIndex'])->name('.report');

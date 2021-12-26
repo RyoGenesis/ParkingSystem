@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -18,9 +17,6 @@ class AuthController extends Controller
         ];
         $credential = $request->validate($validation);
 
-        if($request->remember){
-            Cookie::queue('email',$credential['email'],10080);
-        }
         if(Auth::attempt($credential,true)) return redirect()->route("admin.dashboard");
         else{
             return redirect()->back()->withErrors("Invalid Account!");
@@ -32,7 +28,6 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/admin');
     }
 

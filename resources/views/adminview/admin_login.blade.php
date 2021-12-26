@@ -36,9 +36,6 @@
                                         @endif
                                     </td>
                                 </tr>                
-                                <tr>
-                                    <td colspan="2" class="text-center"><input type="checkbox" name="remember" id="remember"> Remember Me</td>
-                                </tr>
                             </tbody>
                         </table>  
                         <button class="btn btn-warning" type="submit">Login</button>                
