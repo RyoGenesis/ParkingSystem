@@ -19,5 +19,7 @@ class AdminController extends Controller
         return view('adminview.admin_dashboard');
     }
 
-    
+    public function profileIndex(){
+        return view('adminview.admin_profile');
+    }
 }

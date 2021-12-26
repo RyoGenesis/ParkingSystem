@@ -3,7 +3,7 @@
 
 @section('content')
 <h1 class="text-center p-3">Park Your Vehicle</h1>
-<div class=" card col-10 col-lg-6 col-md-7 m-auto text-center border-2 bg-light border-warning">
+<div class="card col-10 col-lg-6 col-md-7 m-auto text-center border-2 bg-light border-warning">
     <div class="card-header menu-bg">
         <p class="m-0 fw-bolder fs-2">Park Vehicle</p>
     </div>
@@ -29,4 +29,28 @@
         @endif 
     </div>
 </div>
+
+<div class="modal fade" id="parkConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="parkConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="parkConfirmationTitle">Successfully Register Parking Information</h5>
+      </div>
+      <div class="modal-body text-center">
+        <p class="text-success">{{session('success')}}</p>
+        <a href="{{ route('home')}}" class="btn btn-warning">OK</a>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+@if(session('success'))
+<script>
+    console.log('success');
+  $('#parkConfirmation').modal('show');
+</script>
+@endif
 @endsection
+  

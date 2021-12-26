@@ -5,6 +5,6 @@ function display_c() {
     
 function display_ct() {
     var x = new Date().toLocaleString('en-GB');
-    document.getElementById('clock').innerHTML = x;
+    $('#clock')[0].innerHTML = x;
     display_c();
 }

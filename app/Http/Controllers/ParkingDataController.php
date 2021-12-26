@@ -53,9 +53,9 @@ class ParkingDataController extends Controller
         else{
             $vehicle = new Vehicle();
             $vehicle->license_plate = $temp['license_plate'];
-            $vehicle->is_parked = true;
-            $vehicle->save();
+            $vehicle->is_parked = true; 
         }
+        $vehicle->save();
 
         $date = date("Y-m-d H:i:s");
         $parkingdata = new ParkingData();

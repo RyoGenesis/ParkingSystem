@@ -2,13 +2,13 @@
 @section('title-header','ParkSys - Admin Login')
 
 @section('content')
-        <div class=" card col-5 m-auto bg-light border-warning">
+        <div class=" card col-lg-5 m-auto bg-light border-warning">
             <div class="card-header menu-bg">
                 <p class="m-0 text-center fw-bolder">Admin Login</p>
             </div>
             <div class="card-body">
                 <div class="w-75 m-auto">
-                    <form action="{{ url('/login') }}" method="POST">
+                    <form class="text-center" action="{{ url('/login') }}" method="POST">
                         @csrf
                         <table class="table table-borderless">
                             <thead></thead>
@@ -39,12 +39,9 @@
                                 <tr>
                                     <td colspan="2" class="text-center"><input type="checkbox" name="remember" id="remember"> Remember Me</td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><button class="btn btn-warning" type="submit">Login</button></td>
-                                </tr>
                             </tbody>
-                        </table>                  
+                        </table>  
+                        <button class="btn btn-warning" type="submit">Login</button>                
                     </form>
                 </div>
             </div>
