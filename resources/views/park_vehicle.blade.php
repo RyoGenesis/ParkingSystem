@@ -46,10 +46,12 @@
     </div>
   </div>
 </div>
+
 @if(session('success'))
 <script>
-    console.log('success');
-  $('#parkConfirmation').modal('show');
+    $(document).ready(function(){
+        $('#parkConfirmation').modal('show');
+    });
 </script>
 @endif
 @endsection
