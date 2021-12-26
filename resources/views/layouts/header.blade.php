@@ -1,9 +1,10 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light menu-bg">
-        <div class="container-fluid px-5 mx-4">
+        <div class="container-fluid px-lg-5 mx-lg-4 px-4">
             <div>
                 <a class="navbar-brand fst-italic " href="/"><i class="fas fa-car-alt"></i> ParkSys</a>
             </div>  
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,10 +22,9 @@
                             </ul>
                         </li>
                     @endauth
-                    
-                    <p id="clock" class="navbar-text ms-2 mb-0"></p>     
                 </ul>
-            </div>
+                <p id="clock" class="navbar-text text-center mb-0"></p>
+            </div>    
         </div>
     </nav>
 </header>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ParkingData;
 use App\Models\Vehicle;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -64,7 +65,7 @@ class ParkingDataController extends Controller
         $parkingdata->is_active = true;
         $parkingdata->unique_code = Str::remove(' ', $vehicle->license_plate) . '-' . time() . '-'. Str::random(8);
         $parkingdata->save();
-        //dd($parkingdata);
+
         return redirect()->back()->with('parking', $parkingdata)->withSuccess('Successfully Generating Parking Ticket.');
     }
 
@@ -81,12 +82,25 @@ class ParkingDataController extends Controller
             return redirect()->back()->withErrors(['invalid'=>'Unique Code Invalid!']);
         }
 
+        $parkingdata = $this->updateParkingData($parkingdata);
+
+        $in = Carbon::parse($parkingdata->time_in);
+        $out = Carbon::parse($parkingdata->time_out);
+        $difference = $in->diff($out);
+        $price = ($difference->i > 0 || $difference->s > 0) ? ($difference->h+1)*3000 : $difference->h*3000;
+        
+        return redirect()->route('checkout-detail')->with('parking', $parkingdata)
+                                                    ->with('difference',$difference)
+                                                    ->with('price',$price);
+    }
+
+    private function updateParkingData($parkingdata){
         $parkingdata->vehicle->is_parked = false;
         $parkingdata->vehicle->save();
         $parkingdata->is_active = false;
         $date = date("Y-m-d H:i:s");
         $parkingdata->time_out = $date;
         $parkingdata->save();
-        return redirect()->route('checkout-detail')->with('parking', $parkingdata);
+        return $parkingdata;
     }
 }
