@@ -12,8 +12,7 @@
         </div>
         <p class="fs-3 my-3">OR</p>
         <div class="m-auto">
-            <form action="{{ route('admin.report.all')}}">
-                @csrf
+            <form action="{{ route('admin.report.range')}}">
                 <div class="row mb-2">
                     <div class="col p-2">
                         <label for="date_start">Date From</label>

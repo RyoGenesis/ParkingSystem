@@ -16,7 +16,7 @@ class ParkingDataController extends Controller
     }
 
     public function all(){
-        return view('adminview.report')->with('parkingdata', ParkingData::paginate(15));
+        return view('adminview.report_detail')->with('parkingdata', ParkingData::where('is_active',false)->get());
     }
 
     public function fromDate(Request $request){
