@@ -23,6 +23,7 @@ class CreateParkingDataTable extends Migration
             $table->dateTime('time_in');
             $table->dateTime('time_out')->nullable();
             $table->boolean('is_active');
+            $table->integer('fee')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

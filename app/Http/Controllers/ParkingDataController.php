@@ -10,35 +10,25 @@ use Illuminate\Support\Str;
 
 class ParkingDataController extends Controller
 {
-    //
-    public function index(){
-        $date = date("Y-m-d H:i:s");
-    }
-
+    //get all finished parking transaction
     public function all(){
         return view('adminview.report_detail')->with('parkingdata', ParkingData::where('is_active',false)->get());
     }
 
+    //get finished parking transaction from a specified date range
     public function fromDate(Request $request){
         $validation = [
-            "date_start"=>'required|date|before_or_equal:date_end',
-            "date_end"=>'date|after_or_equal:date_start',
+            "date_start"=>'required|date',
+            "date_end"=>'required|date|after_or_equal:date_start',
         ];
 
-        // $request->validate($validation);
-        // $category = Category::find($request->id);
+        $validated = $request->validate($validation);
+        $start = Carbon::parse($validated['date_start'])->toDatetimeString();
+        $end = Carbon::parse($validated['date_end'])->toDatetimeString();
 
-        // $categ = Category::all();
+        $parkingdata = ParkingData::where('is_active',false)->whereBetween('time_in',[$start,$end])->get();
 
-        // if($request->category == "name") $keyboard = $this->searchByName($request,$category->id);
-        // else $keyboard = $this->searchByPrice($request,$category->id);
-
-        // return view('view_keyboard')
-        //     ->with('categories',$categ)
-        //     ->with('keyboards', $keyboard)
-        //     ->with('category',$category)
-        //     ->with("success","Search result for (".$request->category.") : ".$request->input);
-        
+        return view('adminview.report_detail')->with('parkingdata', $parkingdata);
     }
 
     public function park(Request $request){
@@ -91,11 +81,13 @@ class ParkingDataController extends Controller
         $in = Carbon::parse($parkingdata->time_in);
         $out = Carbon::parse($parkingdata->time_out);
         $difference = $in->diff($out);
-        $price = ($difference->i > 0 || $difference->s > 0) ? ($difference->h+1)*3000 : $difference->h*3000;
-        
+        $fee = ($difference->i > 0 || $difference->s > 0) ? ($difference->h+1)*3000 : $difference->h*3000;
+        $parkingdata->fee = $fee;
+        $parkingdata->save();
+
         return redirect()->route('checkout-detail')->with('parking', $parkingdata)
                                                     ->with('difference',$difference)
-                                                    ->with('price',$price);
+                                                    ->with('fee',$fee);
     }
 
     private function updateParkingData($parkingdata){

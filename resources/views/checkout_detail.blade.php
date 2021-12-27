@@ -30,7 +30,7 @@
                                     : "XX hour(s) XX min(s) XX second(s)"}}
             </p>
             <p class="fw-bold m-0">Total Payment (Rp 3000/hr):</p>
-            <p>Rp. {{session('price') ?: "XXXXX"}}
+            <p>Rp. {{session('fee') ?: "XXXXX"}}
             </p>
         </div>   
         <a href="{{ route('home')}}" class="btn btn-warning">OK</a>

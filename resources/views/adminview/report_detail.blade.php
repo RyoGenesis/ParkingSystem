@@ -2,10 +2,11 @@
 @section('title-header','ParkSys - Report')
 
 @section('content')
-    <div class="text-center">
-        <h1 class="fw-bold">Report</h1>
+<div>
+        <a class="btn btn-success" href="{{ route('admin.report')}}"><i class="fas fa-chevron-left"></i> Report Options</a>
+        <h1 class="fw-bold text-center">Report</h1>
     </div>
-    <div id="report" >
+    <div id="report" class="table-responsive">
         <p class="mb-0 fw-bold">Export Options:</p>
         <table class="table table-hover table-bordered table-light table-striped" id="report-data">
             <thead>
@@ -15,6 +16,7 @@
                     <th>Code</th>
                     <th>Time In</th>
                     <th>Time Out</th>
+                    <th>Fee (Rp.)</th>
                 </tr>
             </thead>
             <tbody id="List">
@@ -35,10 +37,13 @@
                     <td class="align-middle text-center">
                         {{$data->time_out}}
                     </td>
+                    <td class="align-middle text-center">
+                        {{$data->fee}}
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5">No Data</td>
+                    <td class="text-center" colspan="6">No Data</td>
                 </tr>
             @endforelse
             </tbody>
