@@ -3,10 +3,36 @@
 
 @section('content')
     <div class="text-center">
-        <h1>Report</h1>
-        <p class="fw-bold">Report Result</p>
+        <h1 class="fw-bold">View Report</h1>
+        <p class="fw-bold">Please Choose From Options Below</p>
     </div>
-    <div class="container">
-        <a class="btn btn-danger" href="{{ route('admin.report.all')}}">View All Parking Data Report</a>
+    <div class="container d-flex flex-column align-content-center justify-content-center p-4 text-center">
+        <div class="m-auto my-3">
+            <a class="btn btn-danger fs-3" href="{{ route('admin.report.all')}}">View All Parking Data</a>
+        </div>
+        <p class="fs-3 my-3">OR</p>
+        <div class="m-auto">
+            <form action="{{ route('admin.report.all')}}">
+                @csrf
+                <div class="row mb-2">
+                    <div class="col p-2">
+                        <label for="date_start">Date From</label>
+                        <input class="form-control @error('date_start') is-invalid @enderror" type="date" name="date_start" id="date_start">
+                        @error('date_start')
+                                <p>{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="col p-2">
+                        <label for="date_end">Date To*</label>
+                        <input class="form-control @error('date_end') is-invalid @enderror" type="date" name="date_end" id="date_end">
+                        @error('date_end')
+                                <p>{{$message}}</p>
+                        @enderror
+                    </div>
+                </div>
+                <button class="btn btn-danger fs-3 my-2" type="submit">View From Date Range</button>
+                <p>(* If Date to is empty, it will be set to today)</p>
+            </form>
+        </div>
     </div>
 @endsection

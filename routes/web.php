@@ -42,8 +42,8 @@ Route::prefix('admin')->name('admin')->group(function () {
     Route::middleware('auth')->group(function(){
         Route::get('/dashboard', [AdminController::class,'dashboard'])->name('.dashboard');
         Route::get('/report', [AdminController::class,'reportIndex'])->name('.report');
-        Route::get('/report/all', [AdminController::class,'all'])->name('.report.all');
-        Route::get('/report/range-from', [AdminController::class,'fromDate'])->name('.report.range');
+        Route::get('/report/all', [ParkingDataController::class,'all'])->name('.report.all');
+        Route::get('/report/range-from', [ParkingDataController::class,'fromDate'])->name('.report.range');
         Route::get('/profile', [AdminController::class,'profileIndex'])->name('.profile');
     });
 });

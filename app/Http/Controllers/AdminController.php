@@ -22,4 +22,8 @@ class AdminController extends Controller
     public function profileIndex(){
         return view('adminview.admin_profile');
     }
+
+    public function reportIndex(){
+        return view('adminview.report');
+    }
 }
