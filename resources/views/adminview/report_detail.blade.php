@@ -1,10 +1,11 @@
 @extends('layouts.layout')
-@section('title-header','ParkSys - Report')
+@section('title-header',"ParkSys - Report \n(" . (!empty($date) ? $date['date_start'] . ' to '. $date['date_end'] : "All") . ')')
 
 @section('content')
-<div>
+    <div>
         <a class="btn btn-success" href="{{ route('admin.report')}}"><i class="fas fa-chevron-left"></i> Report Options</a>
         <h1 class="fw-bold text-center">Report</h1>
+        <p class="text-center">({{!empty($date) ? $date['date_start'] . ' to '. $date['date_end'] : "All"}})</p>
     </div>
     <div id="report" class="table-responsive">
         <p class="mb-0 fw-bold">Export Options:</p>
@@ -56,11 +57,9 @@
         $(document).ready(function() {
             var table = $('#report-data').DataTable( {
                 dom: 'Bfrltip',
+                "lengthMenu": [5, 10, 25, 50 ],
                 buttons: ['excel', 'pdf']
             } );
-        
-            // table.buttons().container()
-            //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-        });
+        }); 
     </script>
 @endsection

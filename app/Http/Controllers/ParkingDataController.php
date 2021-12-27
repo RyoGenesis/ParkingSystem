@@ -28,7 +28,7 @@ class ParkingDataController extends Controller
 
         $parkingdata = ParkingData::where('is_active',false)->whereBetween('time_in',[$start,$end])->get();
 
-        return view('adminview.report_detail')->with('parkingdata', $parkingdata);
+        return view('adminview.report_detail')->with('parkingdata', $parkingdata)->with('date',$validated);
     }
 
     public function park(Request $request){

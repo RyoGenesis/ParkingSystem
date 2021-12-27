@@ -45,5 +45,7 @@ Route::prefix('admin')->name('admin')->group(function () {
         Route::get('/report/all', [ParkingDataController::class,'all'])->name('.report.all');
         Route::get('/report/range-from', [ParkingDataController::class,'fromDate'])->name('.report.range');
         Route::get('/profile', [AdminController::class,'profileIndex'])->name('.profile');
+        Route::get('/profile/edit', [AdminController::class,'editIndex'])->name('.profile.edit');
+        Route::post('/update', [AdminController::class,'update']);
     });
 });
