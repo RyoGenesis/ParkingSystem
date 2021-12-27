@@ -31,6 +31,10 @@ class AdminController extends Controller
         return view('adminview.profile_edit');
     }
 
+    public function changeIndex(){
+        return view('adminview.change_password');
+    }
+
     public function update(Request $request){
         $validation = [
             "name"=>'required|min:1',
@@ -42,7 +46,7 @@ class AdminController extends Controller
         $validated = $request->validate($validation);
         
         $user = User::find(Auth::user()->id);
-        if($user == null) return redirect()->back()->withErrors('User Not Found!');
+        if($user == null) return redirect()->back()->withErrors(['error'=>'User Not Found!']);
 
         $user->name = $validated['name'];
         $user->email = $validated['email'];

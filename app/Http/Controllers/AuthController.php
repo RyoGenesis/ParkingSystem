@@ -42,11 +42,9 @@ class AuthController extends Controller
             "confirm"=>"required|same:newPassword"
         ];
         $request->validate($validate);
-        print_r(Hash::make($request->password));
-        
         
         if(!Hash::check($request->password,Auth::user()->password)){
-            return redirect()->back()->withErrors("Old Password is wrong!");
+            return redirect()->back()->withErrors(['wrong_pass'=>"Old Password is wrong!"]);
         }
 
         $user = User::where("email",Auth::user()->email)->first();

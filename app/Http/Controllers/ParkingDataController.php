@@ -33,9 +33,10 @@ class ParkingDataController extends Controller
 
     public function park(Request $request){
         $validation = [
-            "license_plate"=>['required', 'regex:/^[A-Z]{1,2} [0-9]{1,4} [A-Z]{1,3}$/'],
+            "license_plate"=>['required', 'regex:/^[A-Z]{1,2} [0-9]{1,4} [A-Z]{1,3}$/i'],
         ];
         $temp = $request->validate($validation);
+        $temp['license_plate'] = Str::upper($temp['license_plate']);
 
         $vehicle = Vehicle::where('license_plate',$temp['license_plate'])->first();
 

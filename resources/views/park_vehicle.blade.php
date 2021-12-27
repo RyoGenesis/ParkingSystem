@@ -13,7 +13,7 @@
                 @csrf
                 <div class="m-3 justify-content-center">
                     <label class="fw-bold py-2 fs-4" for="license_plate">Enter Your License Plate</label>
-                    <input class="form-control form-control-lg w-75 m-auto @error('license_plate') is-invalid @enderror" type="text" name="license_plate" id="license_plate">
+                    <input class="form-control form-control-lg w-75 m-auto text-uppercase @error('license_plate') is-invalid @enderror" type="text" name="license_plate" id="license_plate">
                     @error('license_plate')
                         <p class="text-danger">{{$message}}</p>
                     @enderror

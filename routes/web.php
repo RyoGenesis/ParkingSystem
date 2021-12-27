@@ -34,7 +34,7 @@ Route::middleware('guest')->group(function () {
 
 //auth route
 Route::post('/login', [AuthController::class,'login']);
-Route::get('/logout', [AuthController::class,'logout']);
+Route::get('/logout', [AuthController::class,'logout'])->name('logout');
 
 //admin related routes
 Route::prefix('admin')->name('admin')->group(function () {
@@ -47,5 +47,7 @@ Route::prefix('admin')->name('admin')->group(function () {
         Route::get('/profile', [AdminController::class,'profileIndex'])->name('.profile');
         Route::get('/profile/edit', [AdminController::class,'editIndex'])->name('.profile.edit');
         Route::post('/update', [AdminController::class,'update']);
+        Route::get('/change-password', [AdminController::class,'changeIndex'])->name('.password');
+        Route::post('/changepass', [AuthController::class,'changePassword']);
     });
 });
