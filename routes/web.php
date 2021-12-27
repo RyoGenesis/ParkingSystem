@@ -30,6 +30,10 @@ Route::middleware('guest')->group(function () {
     Route::get('/checkout', [HomeController::class,'checkoutIndex'])->name('checkout');
     Route::get('/checkout-detail', [HomeController::class,'detail'])->name('checkout-detail');
     Route::post('/checkoutVehicle', [ParkingDataController::class,'checkout']);
+
+    //checking code routes
+    Route::post('/checkCode', [ParkingDataController::class,'check']);
+    Route::get('/check-code', [HomeController::class,'check'])->name('check-code');
 });
 
 //auth route

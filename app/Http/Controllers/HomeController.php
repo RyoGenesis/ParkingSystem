@@ -21,4 +21,8 @@ class HomeController extends Controller
     public function detail(){
         return view('checkout_detail');
     }
+
+    public function check(){
+        return view('check_code');
+    }
 }
