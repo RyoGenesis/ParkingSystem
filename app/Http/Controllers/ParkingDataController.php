@@ -24,7 +24,7 @@ class ParkingDataController extends Controller
 
         $validated = $request->validate($validation);
         $start = Carbon::parse($validated['date_start'])->toDatetimeString();
-        $end = Carbon::parse($validated['date_end'])->toDatetimeString();
+        $end = Carbon::parse($validated['date_end'])->endOfDay()->toDatetimeString();
 
         $parkingdata = ParkingData::where('is_active',false)->whereBetween('time_in',[$start,$end])->get();
 
