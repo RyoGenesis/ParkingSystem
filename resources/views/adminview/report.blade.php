@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <button class="btn btn-danger fs-3 my-2" type="submit">View From Date Range</button>
-                <p>(* Please select today's date if there's no end date spcification)</p>
+                <p>(* Please select today's date if there's no end date specification)</p>
             </form>
         </div>
     </div>
